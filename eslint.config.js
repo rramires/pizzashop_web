@@ -30,6 +30,17 @@ export default defineConfig([
 			},
 			eslintConfigPrettier,
 		],
+		overrides: [
+			{
+				files: [
+					'src/components/ui/**/*.tsx',
+					'src/components/ui/**/*.ts',
+				],
+				rules: {
+					'react-refresh/only-export-components': 'off',
+				},
+			},
+		],
 		languageOptions: {
 			ecmaVersion: 2020,
 			globals: globals.browser,
