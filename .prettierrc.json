@@ -7,5 +7,6 @@
 	"semi": false,
 	"useTabs": true,
 	"tabWidth": 4,
-	"arrowParens": "always"
+	"arrowParens": "always",
+	"plugins": ["prettier-plugin-tailwindcss"]
 }

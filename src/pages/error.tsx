@@ -8,16 +8,21 @@ interface RouteError {
 
 export function ErrorPage() {
 	const error = useRouteError() as RouteError
-	console.error(error)
+	//console.error(error)
 
 	return (
 		<>
 			<Helmet title='Error' />
-			<div id='error-page'>
-				<h1>Oops!</h1>
+			<div
+				id='error-page'
+				className='flex h-screen flex-col items-center justify-center'
+			>
+				<h1 className='text-3xl font-bold'>Oops!</h1>
 				<p>Desculpe, ocorreu um erro.</p>
 				<p>
-					<i>{error.statusText || error.message}</i>
+					<i className='font-bold text-red-600'>
+						{error.statusText || error.message}
+					</i>
 				</p>
 			</div>
 		</>

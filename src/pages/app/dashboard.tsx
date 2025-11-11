@@ -5,7 +5,9 @@ export function Dashboard() {
 	return (
 		<>
 			<Helmet title='Dashboard' />
-			<h2>Dashboard Page!</h2>
+			<div className='text-center'>
+				<h2 className='text-2xl font-bold'>Dashboard Page!</h2>
+			</div>
 		</>
 	)
 }
