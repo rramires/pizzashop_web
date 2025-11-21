@@ -4,6 +4,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
+import { toast } from 'sonner'
 
 const signInForm = z.object({
 	email: z.email(),
@@ -19,9 +20,21 @@ export function SignIn() {
 	} = useForm<SignInFormType>()
 
 	async function handleSignIn(data: SignInFormType) {
-		// await 2s for test
-		console.log(data)
-		await new Promise((resolve) => setTimeout(resolve, 2000))
+		try {
+			//throw new Error('404 not found.')
+			// await 2s for test
+			console.log(data)
+			await new Promise((resolve) => setTimeout(resolve, 2000))
+
+			toast.success('Enviamos um link de autenticação para seu e-mail.', {
+				action: {
+					label: 'Reenviar',
+					onClick: () => handleSignIn(data),
+				},
+			})
+		} catch (err: unknown) {
+			toast.error('E-mail inválido!' + (err as Error).message)
+		}
 	}
 
 	return (
