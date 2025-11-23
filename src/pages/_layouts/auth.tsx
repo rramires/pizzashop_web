@@ -15,7 +15,7 @@ export function AuthLayout() {
 						{new Date().getFullYear()}
 					</footer>
 				</div>
-				<div className='flex flex-col items-center justify-center'>
+				<div className='relative flex flex-col items-center justify-center'>
 					{/* Content will change here */}
 					<Outlet />
 				</div>
