@@ -35,7 +35,6 @@ export default defineConfig([
 			globals: globals.browser,
 		},
 	},
-	// Configuração específica para componentes ShadCDN-UI
 	{
 		files: ['src/components/ui/**/*.{ts,tsx}'],
 		rules: {
