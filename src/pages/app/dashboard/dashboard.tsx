@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async'
+
 import { Button } from '@/components/ui/button'
 
 export function Dashboard() {
