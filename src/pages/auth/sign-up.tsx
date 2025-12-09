@@ -1,3 +1,4 @@
+import { zodResolver } from '@hookform/resolvers/zod'
 import { Helmet } from 'react-helmet-async'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
@@ -24,7 +25,9 @@ export function SignUp() {
 		register,
 		handleSubmit,
 		formState: { isSubmitting },
-	} = useForm<SignUpFormType>()
+	} = useForm<SignUpFormType>({
+		resolver: zodResolver(signUpForm),
+	})
 
 	async function handleSignUp(data: SignUpFormType) {
 		try {
