@@ -1,5 +1,5 @@
 import {
-	/* CartesianGrid, */
+	CartesianGrid,
 	Line,
 	LineChart,
 	ResponsiveContainer,
@@ -49,12 +49,13 @@ export function RevenueChart() {
 					>
 						<XAxis
 							dy={12}
+							stroke={colors.gray[500]}
 							dataKey='date'
 							axisLine={false}
 							tickLine={false}
 						/>
 						<YAxis
-							stroke='#888'
+							stroke={colors.gray[500]}
 							axisLine={false}
 							tickLine={false}
 							tickFormatter={(value: number) => {
@@ -63,6 +64,10 @@ export function RevenueChart() {
 									currency: 'BRL',
 								})
 							}}
+						/>
+						<CartesianGrid
+							vertical={false}
+							className='stroke-muted'
 						/>
 						<Line
 							stroke={colors.red[400]}
