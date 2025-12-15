@@ -22,11 +22,13 @@ export function AccountMenu() {
 		useQuery({
 			queryKey: ['managed-restaurant'],
 			queryFn: getManagedRestaurant,
+			staleTime: Infinity,
 		})
 
 	const { data: profile, isLoading: isLoadingProfile } = useQuery({
 		queryKey: ['profile'],
 		queryFn: getProfile,
+		staleTime: Infinity,
 	})
 
 	return (
