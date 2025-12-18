@@ -1,8 +1,10 @@
-import { useQuery } from '@tanstack/react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
 import { Building, ChevronDown, LogOut } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 
 import { getManagedRestaurant } from '@/api/get-managed-restaurant'
 import { getProfile } from '@/api/get-profile'
+import { signOut } from '@/api/sign-out'
 
 import { StoreProfileDialog } from './store-profile-dialog'
 import { Button } from './ui/button'
@@ -18,6 +20,8 @@ import {
 import { Skeleton } from './ui/skeleton'
 
 export function AccountMenu() {
+	const navigate = useNavigate()
+
 	const { data: managedRestaurant, isLoading: isLoadingManagedRestaurant } =
 		useQuery({
 			queryKey: ['managed-restaurant'],
@@ -29,6 +33,13 @@ export function AccountMenu() {
 		queryKey: ['profile'],
 		queryFn: getProfile,
 		staleTime: Infinity,
+	})
+
+	const { mutateAsync: signOutFn, isPending: isSignOut } = useMutation({
+		mutationFn: signOut,
+		onSuccess: () => {
+			navigate('/sign-in', { replace: true })
+		},
 	})
 
 	return (
@@ -70,9 +81,17 @@ export function AccountMenu() {
 							<span>Perfil da loja</span>
 						</DropdownMenuItem>
 					</DialogTrigger>
-					<DropdownMenuItem className='text-rose-500 dark:text-rose-400'>
-						<LogOut className='mr-2 h-4 w-4' />
-						<span>Sair</span>
+					<DropdownMenuItem
+						className='text-rose-500 dark:text-rose-400'
+						disabled={isSignOut}
+					>
+						<button
+							className='flex w-full items-center'
+							onClick={() => signOutFn()}
+						>
+							<LogOut className='mr-2 h-4 w-4' />
+							<span>Sair</span>
+						</button>
 					</DropdownMenuItem>
 				</DropdownMenuContent>
 			</DropdownMenu>
