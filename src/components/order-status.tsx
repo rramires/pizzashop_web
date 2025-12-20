@@ -28,8 +28,16 @@ export function OrderStatus({ status }: OrderStatusProps) {
 				<span className='h-2 w-2 rounded-full bg-rose-500' />
 			)}
 
-			{['processing', 'delivering'].includes(status) && (
+			{/* {['processing', 'delivering'].includes(status) && (
 				<span className='h-2 w-2 rounded-full bg-blue-400' />
+			)} */}
+
+			{status === 'processing' && (
+				<span className='h-2 w-2 rounded-full bg-blue-400' />
+			)}
+
+			{status === 'delivering' && (
+				<span className='h-2 w-2 rounded-full bg-blue-700' />
 			)}
 
 			{status === 'delivered' && (
