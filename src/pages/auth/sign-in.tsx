@@ -31,7 +31,7 @@ export function SignIn() {
 	} = useForm<SignInFormType>({
 		resolver: zodResolver(signInForm),
 		defaultValues: {
-			email: searchParams.get('email') ?? '',
+			email: searchParams.get('email') ?? 'fulano@email.com',
 		},
 	})
 

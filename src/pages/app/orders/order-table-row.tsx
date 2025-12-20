@@ -1,4 +1,5 @@
 import { ArrowRight, Search, X } from 'lucide-react'
+import { useState } from 'react'
 
 import { OrderStatus } from '@/components/order-status'
 import { Button } from '@/components/ui/button'
@@ -24,17 +25,22 @@ interface OrderTableRowProps {
 }
 
 export function OrderTableRow({ order }: OrderTableRowProps) {
+	const [isDetailsOpen, setIsDetailsOpen] = useState(false)
+
 	return (
 		<TableRow>
 			<TableCell>
-				<Dialog>
+				<Dialog open={isDetailsOpen} onOpenChange={setIsDetailsOpen}>
 					<DialogTrigger asChild>
 						<Button variant='outline' size='xs'>
 							<Search className='h-3 w-3' />
 							<span className='sr-only'>Detalhes do pedido</span>
 						</Button>
 					</DialogTrigger>
-					<OrderDetails />
+					<OrderDetails
+						open={isDetailsOpen}
+						orderId={order.orderId}
+					/>
 				</Dialog>
 			</TableCell>
 			<TableCell className='font-mono text-xs font-medium'>
@@ -48,7 +54,7 @@ export function OrderTableRow({ order }: OrderTableRowProps) {
 			</TableCell>
 			<TableCell className='font-medium'>{order.customerName}</TableCell>
 			<TableCell className='font-medium'>
-				{priceFormatter(order.total)}
+				{priceFormatter(order.total / 100)}
 			</TableCell>
 			<TableCell>
 				<Button variant='outline' size='xs'>
