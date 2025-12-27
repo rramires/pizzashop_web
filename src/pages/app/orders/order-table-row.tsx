@@ -11,7 +11,7 @@ import { OrderStatus } from '@/components/order-status'
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogTrigger } from '@/components/ui/dialog'
 import { TableCell, TableRow } from '@/components/ui/table'
-import { datePastFormatter, priceFormatter } from '@/utils/formatter'
+import { datePastFormatter, priceFormatter } from '@/utils/formatters'
 
 import { OrderDetails } from './order-details'
 

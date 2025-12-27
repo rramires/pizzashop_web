@@ -17,7 +17,7 @@ import {
 	TableHeader,
 	TableRow,
 } from '@/components/ui/table'
-import { datePastFormatter, priceFormatter } from '@/utils/formatter'
+import { datePastFormatter, priceFormatter } from '@/utils/formatters'
 
 export interface OrderDetailsProps {
 	orderId: string

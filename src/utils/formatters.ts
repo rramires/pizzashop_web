@@ -14,3 +14,7 @@ export function priceFormatter(price: number) {
 		currency: 'BRL',
 	}).format(price)
 }
+
+export function numberFormatter(value: number) {
+	return value ? value.toLocaleString('pt-BR') : ''
+}
