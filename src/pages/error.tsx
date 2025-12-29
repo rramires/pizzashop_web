@@ -1,30 +1,24 @@
-import { Helmet } from 'react-helmet-async'
-import { useRouteError } from 'react-router-dom'
-
-interface RouteError {
-	statusText?: string
-	message?: string
-}
+import { Link, useRouteError } from 'react-router-dom'
 
 export function ErrorPage() {
-	const error = useRouteError() as RouteError
-	//console.error(error)
+	const error = useRouteError() as Error
 
 	return (
-		<>
-			<Helmet title='Error' />
-			<div
-				id='error-page'
-				className='flex h-screen flex-col items-center justify-center'
-			>
-				<h1 className='text-3xl font-bold'>Oops!</h1>
-				<p>Desculpe, ocorreu um erro.</p>
-				<p>
-					<i className='font-bold text-red-600'>
-						{error.statusText || error.message}
-					</i>
-				</p>
-			</div>
-		</>
+		<div className='flex h-screen flex-col items-center justify-center gap-2'>
+			<h1 className='text-4xl font-bold'>
+				Oops, algo estranho aconteceu...
+			</h1>
+			<p className='text-accent-foreground'>
+				Um erro aconteceu na aplicação, abaixo você encontra mais
+				detalhes:
+			</p>
+			<pre>{error?.message || JSON.stringify(error)}</pre>
+			<p className='text-accent-foreground'>
+				Voltar para o{' '}
+				<Link to='/' className='text-sky-600 dark:text-sky-400'>
+					Dashboard
+				</Link>
+			</p>
+		</div>
 	)
 }
