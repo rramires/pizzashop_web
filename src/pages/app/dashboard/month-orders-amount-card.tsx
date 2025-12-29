@@ -5,6 +5,8 @@ import { getMonthOrdersAmount } from '@/api/get-month-orders-amount'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { numberFormatter } from '@/utils/formatters'
 
+import { MetricCardSkeleton } from './metric-card-skeleton'
+
 export function MonthOrdersAmountCard() {
 	const { data: monthOrdersAmount } = useQuery({
 		queryFn: getMonthOrdersAmount,
@@ -18,7 +20,7 @@ export function MonthOrdersAmountCard() {
 				<Utensils className='text-muted-foreground h-4 w-4' />
 			</CardHeader>
 			<CardContent className='space-y-1'>
-				{monthOrdersAmount && (
+				{monthOrdersAmount ? (
 					<>
 						<span className='text-2xl font-bold tracking-tight'>
 							{numberFormatter(monthOrdersAmount.amount)}
@@ -41,6 +43,8 @@ export function MonthOrdersAmountCard() {
 							)}
 						</p>
 					</>
+				) : (
+					<MetricCardSkeleton />
 				)}
 			</CardContent>
 		</Card>

@@ -5,6 +5,8 @@ import { getMonthRevenue } from '@/api/get-month-revenue'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { priceFormatter } from '@/utils/formatters'
 
+import { MetricCardSkeleton } from './metric-card-skeleton'
+
 export function MonthRevenueCard() {
 	const { data: monthRevenue } = useQuery({
 		queryFn: getMonthRevenue,
@@ -18,7 +20,7 @@ export function MonthRevenueCard() {
 				<DollarSign className='text-muted-foreground h-4 w-4' />
 			</CardHeader>
 			<CardContent className='space-y-1'>
-				{monthRevenue && (
+				{monthRevenue ? (
 					<>
 						<span className='text-2xl font-bold tracking-tight'>
 							{priceFormatter(monthRevenue.receipt / 100)}
@@ -41,6 +43,8 @@ export function MonthRevenueCard() {
 							)}
 						</p>
 					</>
+				) : (
+					<MetricCardSkeleton />
 				)}
 			</CardContent>
 		</Card>
