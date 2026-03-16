@@ -82,7 +82,7 @@ export function SignUp() {
 						className='space-y-4'
 					>
 						<div className='space-y-2'>
-							<Label htmlFor='email'>
+							<Label htmlFor='restaurantName'>
 								Nome do estabelecimento
 							</Label>
 							<Input
@@ -92,7 +92,7 @@ export function SignUp() {
 							/>
 						</div>
 						<div className='space-y-2'>
-							<Label htmlFor='email'>Seu nome</Label>
+							<Label htmlFor='managerName'>Seu nome</Label>
 							<Input
 								id='managerName'
 								type='text'
@@ -100,7 +100,7 @@ export function SignUp() {
 							/>
 						</div>
 						<div className='space-y-2'>
-							<Label htmlFor='email'>Telefone</Label>
+							<Label htmlFor='phone'>Seu celular</Label>
 							<Input
 								id='phone'
 								type='tel'

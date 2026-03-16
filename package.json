@@ -8,6 +8,7 @@
     "dev:test": "vite --port 50789 --mode test",
     "build": "tsc -b && vite build",
     "test": "vitest",
+    "test:ui": "PLAYWRIGHT_SLOW_UI=true pnpm playwright test --ui",
     "lint": "eslint .",
     "preview": "vite preview",
     "check": "prettier --check \"src/**/*.ts*\"",
